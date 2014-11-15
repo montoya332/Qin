@@ -1,0 +1,8 @@
+The main objective of this project is to create a new automated system to process attendees at large events 
+like orientation where attendees can check in on the fly and provide event administrators with real time analytics. 
+The interface would allow event organizers to generate and email each individual in a group of people with a 
+unique QR code, and attendees would confirm their attendance by simply presenting their QR-code tickets to a 
+designated kiosk, which would scan the individual QR codes and update the results to the online database.
+
+This Web server neededs to be set up using a Linux Apache MySQL PHP (LAMP) and used with PhoneGap Qin project
+at https://github.com/montoya332/QinPhoneGap.git  
