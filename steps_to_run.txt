@@ -1,0 +1,98 @@
+- Download http://pear.php.net/go-pear.phar
+- Run php go-pear.phar
+- pear install mail
+- pear install mail_mime
+- pear install Net_SMTP
+- Add pear to PATH
+- Uncomment in 'extension=php_openssl.dll' in php.ini
+
+
+
+cd C:\OPENSSL-win32
+
+mkdir certs
+mkdir crl
+mkdir newcerts
+mkdir private
+
+set OPENSSL_CONF=c:\openssl-win32\bin\openssl.cfg
+
+
+cd C:\wamp\Apache2\bin
+
+
+
+openssl req -new > webserver.csr
+
+Passphase: Senior1234
+Challenge Password: hahacatchmeifyoucan
+
+# Remove passphase
+
+openssl rsa -in privkey.pem -out webserver.key
+
+# Convert into signed certificate
+
+openssl x509 -in webserver.csr -out webserver.cert -req -signkey webserver.key -days 365
+
+
+
+STORE CERTIFICATE FILES
+
+Create a folder c:\wamp\OpenSSL with the following subfolders:
+
+/certs
+/crl
+/newcerts
+/private
+Copy the following files to /certs/:
+
+webserver.cert
+webserver.csr
+webserver.key
+Copy the following files to /private/:
+
+.rnd
+privkey.pem
+
+
+MODIFY HTTPD-SSL.CONF
+SSLSessionCache        "shmcb:c:/wamp/bin/apache/Apache2.4.4/logs/ssl_scache(512000)"
+
+
+
+
+
+DocumentRoot "c:/wamp/www"
+ServerName www.example.com:443
+ServerAdmin admin@example.com
+ErrorLog "c:/wamp/logs/error_ssl.log"
+TransferLog "c:/wamp/logs/access_ssl.log"
+
+SSLCertificateFile "c:/OpenSSL-Win32/certs/webserver.cert"
+SSLCertificateKeyFile "c:/OpenSSL-Win32/certs/webserver.key"
+SSLCARevocationPath "C:/wamp/OpenSSL/crl"
+
+In C:\wamp\bin\apache\Apache2.2.4\conf\openssl.cnf
+
+dir		= C:/OpenSSL-Win32	# Where everything is kept
+
+In C:\wamp\bin\apache\Apache2.4.4\conf\httpd.conf
+
+Uncomment:
+Include conf/extra/httpd-ssl.conf
+
+-> in httpd.conf
+
+>> Add
+Listen 443
+
+
+
+
+
+- Configure Apache for :443 to point to /web
+- Configure Apache for :80 to point to /web/http
+
+ 
+- Restart Apache

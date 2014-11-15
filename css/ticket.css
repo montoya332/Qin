@@ -1,0 +1,68 @@
+#ticket {
+	width:600px;
+	height:350px;
+	border:2px solid black;
+	/*background-image:url('../template/ticket_template.png');*/
+	position:relative;
+}
+
+#oddticket {
+	page-break-after:always;
+}
+
+#qrcode {
+	position:absolute;
+	left:30px;
+	top:30px;
+	width:200px;
+	height:200px;
+	padding: 0px;
+} 	
+
+.studentlabel {
+
+	font-size: 25px;
+	position:absolute;
+	
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+	background:rgba(255,255,255,.3);
+	font-family:sans-serif;
+
+}
+
+#studentname {
+	top: 230;
+	left: 40px;
+}
+
+#eventname {
+	top: 260;
+	left: 40px;
+}
+
+.footer {
+
+	font-size: 13px;
+	position:absolute;
+	top: 320;
+	left: 40px;
+	border: 0px;
+	padding: 0px;
+	margin: 0px;
+	background:rgba(255,255,255,.3);
+	font-family:sans-serif;
+
+}
+.circular {
+	width: 200px;
+	height: 200px;
+	border-radius: 150px;
+	-webkit-border-radius: 150px;
+	-moz-border-radius: 150px;
+	background: url no-repeat;
+	box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-webkit-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	-moz-box-shadow: 0 0 8px rgba(0, 0, 0, .8);
+	}
